@@ -1,5 +1,3 @@
-#include <algorithm>
-#include <cstddef>
 #ifndef RECCHECK
 // if you want to add any #includes like <iostream> you must do them here
 // (before the next endif)
@@ -14,7 +12,9 @@ int getHeight(Node *root) {
   if (root == nullptr) {
     return 0;
   }
-  return 1 + max(getHeight(root->left), getHeight(root->right));
+  int heightLeft = getHeight(root->left);
+  int heightRight = getHeight(root->right);
+  return 1 + (heightLeft > heightRight ? heightLeft : heightRight);
 }
 
 bool equalPaths(Node *root) {
